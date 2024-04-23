@@ -1,12 +1,9 @@
 
-import Item from "./component/item";
-
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 import '../app/style/styling.scss'
-// import Item from "./component/item";
-
+import Item from "./component/Item";
 export default function Home() {
 
 
