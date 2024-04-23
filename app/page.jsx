@@ -1,8 +1,11 @@
+
 import Item from "./component/item";
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 import '../app/style/styling.scss'
+// import Item from "./component/item";
 
 export default function Home() {
 
@@ -32,6 +35,8 @@ export default function Home() {
       </div>
 
       <div className="content">
+
+        
 
         <Item
           title={"Reddit Multi Search"}
