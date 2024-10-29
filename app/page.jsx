@@ -41,12 +41,13 @@ export default function Home() {
       <div className="title">
 
         <h1>wwwpeckelsen</h1>
-        <h2>Wessel Peckelsen, portfolio</h2>
+        <h2>Portfolio of Wessel Peckelsen</h2>
         <ul>
+          <br />
           <li><Link href="mailto:wpeckelsen@gmail.com">wpeckelsen@gmail.com</Link></li>
-
+          <br />
           <li><Link href="https://github.com/wpeckelsen">Github</Link></li>
-
+          <br />
           <li><Link href="https://www.linkedin.com/in/wpeckelsen/">LinkedIn</Link></li>
 
         </ul>
@@ -66,7 +67,7 @@ export default function Home() {
           />
         ))}
       </div>
-      
+
       <div className="image">
         <Image
           // src="/public/smile.jpg"
