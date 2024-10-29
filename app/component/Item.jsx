@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function Item({ title, description, tech, date, website, githubLink }) {
+export default function Item({ title, description, tech, date, url1, url2 }) {
     return (
         <>
             <h3>{title}</h3>
