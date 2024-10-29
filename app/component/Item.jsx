@@ -15,13 +15,16 @@ export default function Item({ title, description, tech, date, url1, url2 }) {
                 <li>
                     <p>{description}</p>
                 </li>
-                <li>
-                    <Link href={website}>Website</Link>
-                </li>
-                <li>
-                    <Link href={githubLink}>Github</Link>
-                </li>
-
+                {url1 && (
+                    <li>
+                        <Link href={url1} target="_blank" rel="noopener noreferrer">{url1}</Link>
+                    </li>
+                )}
+                {url2 && (
+                    <li>
+                        <Link href={url2} target="_blank" rel="noopener noreferrer">{url2}</Link>
+                    </li>
+                )}
             </ul>
         </>
     )
