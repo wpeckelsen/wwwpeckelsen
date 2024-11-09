@@ -54,7 +54,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  // text-decoration: underline;
   text-decoration-thickness: 3px;
 }
 
@@ -71,25 +71,37 @@ input {
   width: 80%;
 }
 
-.switch-title {  
-  color: blue;
+
+// 
+.switch {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
 }
 
-.switch-title-active {
-  color: blue;
+
+.active {
+  font-weight: bold; 
   text-decoration: underline;
-  text-decoration-thickness: 5px;
 }
 
-.switch-title-active:hover {
-  text-decoration-thickness: 5px;
-}
-
-.switch-title:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 5px;
+.active:hover {
+  font-weight: bold; 
   cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
 }
+
+.inactive:hover{
+  font-weight: bold; 
+  cursor: pointer;
+  
+  
+}
+
+
+
+// 
 
 @media only screen and (max-width: 600px) {
   h2 {

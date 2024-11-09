@@ -15,6 +15,7 @@ export default function Home() {
 
 
   const [items, setItems] = useState([]);
+  const [choice, setChoice] = useState('portfolio');
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -29,6 +30,8 @@ export default function Home() {
       }
     };
 
+
+
     fetchItems();
   }, []);
 
@@ -40,8 +43,28 @@ export default function Home() {
 
       <div className="title">
 
+
+
         <h1>wwwpeckelsen</h1>
-        <h2>Portfolio of Wessel Peckelsen</h2>
+        <h2>Wessel Peckelsen</h2>
+
+
+      
+        <span className="switch">
+          <h3
+            onClick={() => { setChoice('portfolio') }}
+            className={choice === 'portfolio' ? 'active' : 'inactive'}>
+            Portfolio
+          </h3>
+
+          <h3>{'/'}</h3>
+
+          <h3 onClick={() => { setChoice('blog') }}
+            className={choice === 'blog' ? 'active' : 'inactive'}>
+            Blog
+          </h3>
+        </span>
+
         <ul>
           <br />
           <li><Link href="mailto:wpeckelsen@gmail.com">wpeckelsen@gmail.com</Link></li>
@@ -54,23 +77,22 @@ export default function Home() {
       </div>
 
       <div className="content">
-        {/* Render Item components based on fetched data */}
+
         {items.map((item) => (
           <Item
-            key={item.id} // Assuming each item has a unique id
+            key={item.id}
             title={item.title}
             description={item.description}
             tech={item.tech}
             date={item.date}
-            website={item.url1} // Use the correct property for the website
-            githubLink={item.url2} // Use the correct property for the GitHub link
+            website={item.url1}
+            githubLink={item.url2}
           />
         ))}
       </div>
 
       <div className="image">
         <Image
-          // src="/public/smile.jpg"
           src={"/smile.png"}
           margin={20}
           width={50}
