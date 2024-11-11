@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 import '../app/style/styling.scss'
-import Item from "./component/Item";
+import Item from "./component/portfolioItem";
 
 import { useEffect, useState } from 'react';
 import { supabase } from "./supabase/supabaseClient";
@@ -35,11 +35,8 @@ export default function Home() {
 
       }
     };
-
-
-
     fetchItems();
-  }, []);
+  }, [choice]);
 
 
   return (
@@ -84,17 +81,21 @@ export default function Home() {
 
       <div className="content">
 
-        {items.map((item) => (
-          <Item
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            tech={item.tech}
-            date={item.date}
-            website={item.url1}
-            githubLink={item.url2}
-          />
-        ))}
+        {choice === 'portfolio' ? (
+          portfolioItem.map((item) => (
+            <portfolioItem
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              tech={item.tech}
+              date={item.date}
+              website={item.url1}
+              githubLink={item.url2}
+            />
+          ))
+        ) : ('blog section here')}
+
+
       </div>
 
       <div className="image">
