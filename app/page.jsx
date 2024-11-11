@@ -14,19 +14,25 @@ export default function Home() {
 
 
 
-  const [items, setItems] = useState([]);
+  const [portfolioItem, setPortfolioItem] = useState([]);
+  const [blogPost, setBlogPost] = useState([]);
   const [choice, setChoice] = useState('portfolio');
 
   useEffect(() => {
     const fetchItems = async () => {
       const { data, error } = await supabase
-        .from('codeprojects')
+        // .from('codeprojects')
+        .from({ choice })
         .select('*');
 
       if (error) {
         console.error('Error fetching data:', error);
       } else {
-        setItems(data);
+
+        if (choice === 'portfolio') {
+          setPortfolioItem(data);
+        } else { setBlogPost(data) }
+
       }
     };
 
@@ -49,7 +55,7 @@ export default function Home() {
         <h2>Wessel Peckelsen</h2>
 
 
-      
+
         <span className="switch">
           <h3
             onClick={() => { setChoice('portfolio') }}
