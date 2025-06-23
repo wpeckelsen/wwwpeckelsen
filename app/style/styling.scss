@@ -7,7 +7,7 @@
 //   border-width: 1px;
 // }
 
-.header{
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,11 +23,12 @@
   margin-top: 20px;
   width: 100%;
   height: clamp(50vh, 700px, 90vh);
-  
+
 }
 
 .titleGrid {
-  position: relative; /* needed for pseudo-element positioning */
+  position: relative;
+  /* needed for pseudo-element positioning */
   color: white;
   border-radius: 3px;
   border-color: white;
@@ -46,16 +47,20 @@
 
 .titleGrid::before {
   content: "";
-  pointer-events: none;          /* allow clicks to pass through */
+  pointer-events: none;
+  /* allow clicks to pass through */
   position: absolute;
-  inset: 0;                     /* full size */
+  inset: 0;
+  /* full size */
   background: url('/paper-background.png') repeat;
-  opacity: 0.99;                /* adjust for grain intensity */
-  border-radius: inherit;       /* match border radius */
+  opacity: 0.99;
+  /* adjust for grain intensity */
+  border-radius: inherit;
+  /* match border radius */
   z-index: 1;
 }
 
-.titleGrid > * {
+.titleGrid>* {
   position: relative;
   z-index: 2;
 }
@@ -89,7 +94,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   margin: 20px;
 }

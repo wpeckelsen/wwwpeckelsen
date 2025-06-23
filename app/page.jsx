@@ -61,21 +61,23 @@ export default function Home() {
       </div>
 
 
-      
+
       <div className="title">
         <h2>Wessel Peckelsen</h2>
-        <span className="switch">
+        <div className="switch">
           <h3
-            onClick={() => { setChoice('coding') }}
+            onClick={() => setChoice('coding')}
             className={choice === 'coding' ? 'active' : 'inactive'}>
             Coding Portfolio
           </h3>
-          <h3>{'/'}</h3>
-          <h3 onClick={() => { setChoice('blog') }}
+          <h3 className="separator">{'/'}</h3>
+          <h3
+            onClick={() => setChoice('blog')}
             className={choice === 'blog' ? 'active' : 'inactive'}>
             Blog
           </h3>
-        </span>
+        </div>
+
 
         <ul>
           <br />
