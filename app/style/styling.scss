@@ -18,30 +18,47 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: #7863ce;
+  background-color: #2300ad;
   border-radius: 2px;
-  // margin: 20px;
   margin-top: 20px;
-  width: clamp(40vw, 500px, 90vw);
+  width: 100%;
   height: clamp(50vh, 700px, 90vh);
   
 }
 
 .titleGrid {
-  border-radius: 2px;
-  border-color: black;
+  position: relative; /* needed for pseudo-element positioning */
+  color: white;
+  border-radius: 3px;
+  border-color: white;
   border-style: solid;
   display: grid;
   column-gap: 1px;
   row-gap: 1px;
+  padding: 10px;
+
   grid-template-areas:
     "a a a"
     "b b b"
     "c c c"
-    "d d d"
-  ;
+    "d d d";
 }
 
+.titleGrid::before {
+  content: "";
+  pointer-events: none;          /* allow clicks to pass through */
+  position: absolute;
+  inset: 0;                     /* full size */
+  background: url('/paper-background.png') repeat;
+  opacity: 0.99;                /* adjust for grain intensity */
+  border-radius: inherit;       /* match border radius */
+  z-index: 1;
+}
+
+.titleGrid > * {
+  position: relative;
+  z-index: 2;
+}
 
 .grid-a {
   grid-area: a;
@@ -72,7 +89,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   margin: 20px;
 }
@@ -114,9 +131,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin: 20px;
-  // border-radius: 2px;
-  // border-style: solid;
-  // border-color: red;
 }
 
 
@@ -133,9 +147,14 @@
   border-radius: 2px;
   border-style: solid;
   border-color: blue;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  max-width: 50%;
+
+  width: 100%;
+  max-width: clamp(320px, 40vw, 600px);
+  margin-left: auto;
+  margin-right: auto;
 }
