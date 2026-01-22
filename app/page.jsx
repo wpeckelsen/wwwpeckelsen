@@ -22,7 +22,7 @@ export default function Home() {
         
         // Fetch blog posts
         const { data, error } = await supabase
-          .from('blog')
+          .from('Blog')
           .select('*')
           .order('created_at', { ascending: false });
 
