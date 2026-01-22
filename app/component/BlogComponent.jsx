@@ -4,22 +4,23 @@ import Link from 'next/link'
 export default function BlogComponent({ title, subTitle, date, url, headerImage, body }) {
     return (
         <>
-            <h3>{title}</h3>
+            <h3>
+                {url ? <Link href={url}>{title}</Link> : title}
+            </h3>
 
             <p>{subTitle}</p>
 
             <p> {date} </p>
 
-            {url && (
-                <Link href={url} target="_blank" rel="noopener noreferrer">{url}</Link>
-            )}
-
-            <div>{headerImage}</div>
+            {headerImage && <div>{headerImage}</div>}
 
             <div>
                 {body}
             </div>
 
+            {url && (
+                <Link href={url} className="read-more">Read More</Link>
+            )}
             
         </>
     )
