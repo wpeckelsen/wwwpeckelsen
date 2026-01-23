@@ -1,14 +1,87 @@
+// app/supabase/fetchImageUrl.js
 import { supabase } from "./supabaseClient";
 
+// Updated bucket constants with both buckets
+export const BUCKETS = {
+  GENERAL_IMAGES: 'generalimages',      // For wwwessel.jpg and general site images
+  BLOG_IMAGES: 'blogimages',     // For blog-specific images
+  HEADER_IMAGES: 'headers',      // For future use
+  CONTENT_IMAGES: 'content'      // For future use
+};
 
+// Main function to get image URL
+export function getImageUrl(bucketName, filePath) {
+  const { data } = supabase.storage.from(bucketName).getPublicUrl(filePath);
+  return data.publicUrl;
+}
 
-export async function fetchImageUrl(bucketName, filePath){
-    const {data, error} = supabase.storage.from(bucketName).getPublicUrl(filePath);
+// Alias for backward compatibility
+export async function fetchImageUrl(bucketName, filePath) {
+  return getImageUrl(bucketName, filePath);
+}
 
-    if (error){
-        return null
-    } else 
-    console.log("+fetchImageUrl+ " + data.publicUrl + " +fetchImageUrl+");
-    return data.publicUrl;
-    
+// Get hero image (from general images bucket)
+export function getHeroImage(imagePath = 'print.png') {
+  return getImageUrl(BUCKETS.GENERAL_IMAGES, imagePath);
+}
+
+// Get blog header image (from blogimages bucket)
+export function getBlogHeaderImage(blogId, imagePath = null) {
+  const bucket = BUCKETS.BLOG_IMAGES;
+  
+  if (imagePath) {
+    return getImageUrl(bucket, imagePath);
+  }
+  
+  // Default pattern: blog-headers/{blogId}.jpg
+  const defaultPath = `blog-headers/${blogId}.jpg`;
+  return getImageUrl(bucket, defaultPath);
+}
+
+// Get any image with fallback
+// // export function getImageWithFallback(imagePath, bucketName = BUCKETS.GENERAL_IMAGES, fallbackPath = 'default.jpg') {
+// //   try {
+// //     const url = getImageUrl(bucketName, imagePath);
+// //     return url;
+// //   } catch (error) {
+// //     console.warn(`Image not found: ${imagePath}, using fallback`);
+// //     return getImageUrl(bucketName, fallbackPath);
+// //   }
+// }
+
+// For multiple images
+export function getImageUrls(bucketName, paths) {
+  return paths.map(path => ({
+    path,
+    url: getImageUrl(bucketName, path)
+  }));
+}
+
+// Helper to get images by type
+export const IMAGE_HELPERS = {
+  hero: (filename = 'print.png') => getImageUrl(BUCKETS.GENERAL_IMAGES, filename),
+  blogHeader: (blogId, filename = null) => getBlogHeaderImage(blogId, filename),
+  blogContent: (path) => getImageUrl(BUCKETS.BLOG_IMAGES, path),
+  siteAsset: (path) => getImageUrl(BUCKETS.GENERAL_IMAGES, path)
+};
+
+// For future uploads
+export async function uploadImage(file, bucketName, folder = '') {
+  try {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = folder ? `${folder}/${fileName}` : fileName;
+
+    const { error: uploadError } = await supabase.storage
+      .from(bucketName)
+      .upload(filePath, file);
+
+    if (uploadError) throw uploadError;
+
+    const url = getImageUrl(bucketName, filePath);
+    return { url, path: filePath };
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
 }

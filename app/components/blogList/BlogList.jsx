@@ -1,4 +1,6 @@
-import BlogPreview from "../blogPreview/BlogPreview";
+// components/blogList/BlogList.jsx
+import BlogPreview from "../blogPreview/BlogPreview"
+import "./BlogList.scss"
 
 export default function BlogList({ posts }) {
   return (
@@ -9,9 +11,10 @@ export default function BlogList({ posts }) {
             key={post.id}
             title={post.title}
             subTitle={post.subtitle || ''}
+            date={post.created_at}
             url={`/blog/${post.id}`}
             headerImage={null}
-            body={<p>{post.body_preview || post.body?.substring(0, 150) || ''}...</p>}
+            body={<p>{post.body_preview || post.body?.substring(0, 200) || ''}...</p>}
           />
         ))
       ) : (
@@ -20,5 +23,5 @@ export default function BlogList({ posts }) {
         </div>
       )}
     </div>
-  );
+  )
 }

@@ -1,85 +1,91 @@
-@import '../../style/globals.scss';
-
 .hero {
+  width: 100vw;
+}
+.blueBox {
+  position: relative;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  /* Blurred background */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.2);
+    filter: blur(40px) brightness(1.5) saturate(120%) contrast(0.9);
+    opacity: 0.7; /* slightly transparent for light effect */
+  }
+
+  /* Light bluish overlay */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: rgba(200, 220, 255, 0.3); /* light blueish tint */
+  }
 }
 
-.blueBox {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #2300ad;
-  border-radius: 2px;
-  // margin-top: 20px;
-  width: 100%;
-  height: clamp(50vh, 700px, 90vh);
 
+
+.titleWrapper {
+  position: relative;
+ z-index: 2;
+  height: 100vh;          // 👈 image fills screen height
+  aspect-ratio: 2 / 3;    // 👈 1024 / 1536
+
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; // 👈 align to top
+  padding-top: 3vh;  
+}
+
+.titleImage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .titleGrid {
   position: relative;
-  /* needed for pseudo-element positioning */
-  color: white;
-  border-radius: 3px;
-  border-color: white;
-  border-style: solid;
-  display: grid;
-  column-gap: 1px;
-  row-gap: 1px;
-  padding: 10px;
-
-  grid-template-areas:
-    "a a a"
-    "b b b"
-    "c c c"
-    "d d d";
-}
-
-.titleGrid::before {
-  content: "";
-  pointer-events: none;
-  /* allow clicks to pass through */
-  position: absolute;
-  inset: 0;
-  /* full size */
-  background: url('/paper-background.png') repeat;
-  opacity: 0.99;
-  /* adjust for grain intensity */
-  border-radius: inherit;
-  /* match border radius */
-  z-index: 1;
-}
-
-.titleGrid>* {
-  position: relative;
   z-index: 2;
-}
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 👈 THIS
+  grid-auto-rows: min-content;
+  place-content: center;
 
-.grid-a {
-  grid-area: a;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
+  gap: 1px;
+  padding: 1rem;
 
+  color: rgb(25, 38, 158);
+  border-radius: 4px;
+  
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 
-
-.grid-b {
-  grid-area: b;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
-.grid-c {
-  grid-area: c;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
+.grid-a,
+.grid-b,
+.grid-c,
 .grid-d {
-  grid-area: d;
-  // margin-left: 50px;
-  // margin-right: 50px;
+  grid-column: 1 / -1; // 👈 span full width
+  
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
 }
