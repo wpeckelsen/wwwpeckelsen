@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export default function BlogComponent({ title, subTitle, date, url, headerImage, body }) {
+export default function BlogPreview({ title, subTitle, date, url, headerImage, body }) {
     return (
         <>
             <h3>

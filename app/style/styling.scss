@@ -1,101 +1,5 @@
 @import './globals.scss';
 
-
-
-
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.blueBox {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #2300ad;
-  border-radius: 2px;
-  // margin-top: 20px;
-  width: 100%;
-  height: clamp(50vh, 700px, 90vh);
-
-}
-
-.titleGrid {
-  position: relative;
-  /* needed for pseudo-element positioning */
-  color: white;
-  border-radius: 3px;
-  border-color: white;
-  border-style: solid;
-  display: grid;
-  column-gap: 1px;
-  row-gap: 1px;
-  padding: 10px;
-
-  grid-template-areas:
-    "a a a"
-    "b b b"
-    "c c c"
-    "d d d";
-}
-
-.titleGrid::before {
-  content: "";
-  pointer-events: none;
-  /* allow clicks to pass through */
-  position: absolute;
-  inset: 0;
-  /* full size */
-  background: url('/paper-background.png') repeat;
-  opacity: 0.99;
-  /* adjust for grain intensity */
-  border-radius: inherit;
-  /* match border radius */
-  z-index: 1;
-}
-
-.titleGrid>* {
-  position: relative;
-  z-index: 2;
-}
-
-.grid-a {
-  grid-area: a;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
-
-
-.grid-b {
-  grid-area: b;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
-.grid-c {
-  grid-area: c;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
-.grid-d {
-  grid-area: d;
-  // margin-left: 50px;
-  // margin-right: 50px;
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 20px;
-}
-
-
 .switch {
   display: flex;
   align-items: center;
@@ -126,15 +30,6 @@
 
 
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 20px;
-}
-
-
 
 .image {
   display: flex;
@@ -144,18 +39,3 @@
   margin: 20px;
 }
 
-.blog-overview {
-  border-radius: 2px;
-  border-style: solid;
-  border-color: blue;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  width: 100%;
-  max-width: clamp(320px, 40vw, 600px);
-  margin-left: auto;
-  margin-right: auto;
-}
