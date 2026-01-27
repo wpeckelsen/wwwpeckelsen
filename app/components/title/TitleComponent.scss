@@ -1,9 +1,60 @@
 @import '../../style/globals.scss';
 
-.title {
+.title-one {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  margin: 20px;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  width: 80%;
+  // text-align: center;
+  min-height: 60vh;
+}
+
+.title-two {
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+// .name {
+//   font-size: clamp(2.5rem, 5vw, 3.5rem);
+//   font-weight: 700;
+//   margin-bottom: 1rem;
+// }
+
+// .bio {
+//   font-size: 1.25rem;
+//   color: #6c757d;
+//   line-height: 1.6;
+// }
+
+.contact-links {
+  ul {
+    list-style: none;
+//     // display: flex;
+//     // flex-wrap: wrap;
+//     // justify-content: center;
+//     // gap: 2rem;
+//     // margin: 0;
+//     // padding: 0;
+    
+    li {
+      margin: 0;
+    }
+    
+//     // a {
+//     //   font-size: 1.1rem;
+//     //   color: #007bff;
+//     //   text-decoration: none;
+//     //   padding: 0.5rem 0;
+//     //   transition: color 0.2s ease-in-out;
+      
+//     //   &:hover {
+//     //     color: #0056b3;
+//     //     text-decoration: underline;
+//     //   }
+//     // }
+  }
 }

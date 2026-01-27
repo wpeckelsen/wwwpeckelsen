@@ -36,18 +36,19 @@ export default function Hero() {
       style={{ '--bg-image': `url(${imageUrl})` }}
       >
         {loaded && (
-          <div className="titleWrapper">
-            <div className="titleImage">
+          <div className="heroWrapper">
+            <div className="heroImage">
               <Image
                 src={imageUrl}
                 alt="Print texture background"
                 fill
                 sizes="700px"
                 priority
+                
               />
             </div>
 
-            <h1 className="titleGrid">
+            <h1 className="heroGrid">
               <span className="grid-a">w w w</span>
               <span className="grid-b">p e c</span>
               <span className="grid-c">k e l</span>

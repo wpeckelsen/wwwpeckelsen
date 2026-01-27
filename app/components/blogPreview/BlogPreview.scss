@@ -1,6 +1,6 @@
 // components/blogPreview/BlogPreview.scss
 .blog-preview {
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: var(--border-radius);
   padding: 2rem;
   transition: var(--transition);
@@ -104,23 +104,3 @@
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .blog-preview {
-    padding: 1.5rem;
-  }
-  
-  .blog-preview-subtitle {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .blog-preview {
-    padding: 1.25rem;
-  }
-  
-  .blog-preview:not(:last-child)::after {
-    bottom: -0.75rem;
-  }
-}

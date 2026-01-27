@@ -7,6 +7,7 @@ import Hero from "./components/hero/Hero";
 import BlogList from "./components/blogList/BlogList";
 import TitleComponent from "./components/title/TitleComponent";
 import './style/styling.scss'; // Keep if you still have styling here
+import Footer from "./components/footer/Footer";
 
 export default function Home() {
   const [blogPost, setBlogPost] = useState([]);
@@ -18,9 +19,9 @@ export default function Home() {
       try {
         setLoading(true);
         setError(null);
-        
+
         const { data, error } = await supabase
-          .from('blog') //table is called 'Blog', capital B.
+          .from('blog')
           .select('*')
           .order('created_at', { ascending: false });
 
@@ -59,12 +60,12 @@ export default function Home() {
     <main className="main-container">
       <Hero />
       <TitleComponent />
-      
+
       {/* Error state */}
       {error && (
         <div className="error-container">
           <p>{error}</p>
-          <button 
+          <button
             onClick={() => window.location.reload()}
             className="retry-button"
           >
@@ -72,26 +73,11 @@ export default function Home() {
           </button>
         </div>
       )}
-      
-      {/* Blog list */}
+
       <div className="blog-list-container">
         <BlogList posts={blogPost} />
       </div>
 
-      {/* Optional: Add a footer or decorative element */}
-      <footer className="page-footer">
-        <div className="smiley-container">
-          <Image
-            src="/smile.png"
-            width={50}
-            height={50}
-            alt="Smiley"
-            priority={false} // Remove priority if not above the fold
-            className="smiley-image"
-          />
-          <p className="footer-text">Made with Next.js & Supabase</p>
-        </div>
-      </footer>
     </main>
   );
 }

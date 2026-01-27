@@ -1,0 +1,30 @@
+.page-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--divider-color, #e5e5e5);
+  width: 100%;
+  // max-width: 800px;
+  text-align: center;
+}
+
+.smiley-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.smiley-image {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666);
+  font-weight: 300;
+}

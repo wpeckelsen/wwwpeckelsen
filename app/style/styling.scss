@@ -1,32 +1,5 @@
 @import './globals.scss';
 
-// .switch {
-//   display: flex;
-//   align-items: center;
-//   font-weight: normal;
-// }
-
-
-// .active {
-//   font-weight: bold; 
-//   text-decoration: underline;
-//   text-decoration-thickness: 5px;
-// }
-
-// .active:hover {
-//   font-weight: bold; 
-//   cursor: pointer;
-//   text-decoration: underline;
-//   text-decoration-thickness: 5px;
-// }
-
-// .inactive:hover{
-//   font-weight: bold; 
-//   cursor: pointer;
-//   text-decoration: underline;
-//   text-decoration-thickness: 5px;
-// }
-
 
 
 .image {
@@ -37,11 +10,8 @@
   margin: 20px;
 }
 
-// Add to your existing styling.scss or create new styles
-
 .main-container {
   min-height: 100vh;
-  padding: 2rem 1rem;
   background-color: var(--bg-off-white, #fafafa);
   display: flex;
   flex-direction: column;
@@ -107,64 +77,53 @@
   }
 }
 
-.blog-list-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.page-footer {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--divider-color, #e5e5e5);
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-}
-
-.smiley-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.smiley-image {
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-  
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.footer-text {
-  font-size: 0.875rem;
-  color: var(--text-secondary, #666);
-  font-weight: 300;
-}
-
-// Responsive adjustments
+// Combined media queries at bottom
 @media (max-width: 768px) {
-  .main-container {
-    padding: 1.5rem 0.75rem;
-  }
-  
-  .blog-list-container {
-    margin: 1.5rem auto;
-    padding: 0 0.75rem;
+  .heroWrapper {
+    margin: 30px 0;
   }
   
   .page-footer {
     margin-top: 3rem;
     padding-top: 1.5rem;
   }
+  
+  .blog-overview {
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+  
+  .blog-preview-subtitle {
+    font-size: 1rem;
+  }
+  
+  .blog-post-container {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .blog-post-content {
+    padding: 2rem;
+  }
+  
+  .blog-post-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .title-one {
+    padding: 4rem 1.5rem;
+    min-height: 50vh;
+  }
+  
+  .contact-links ul {
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .main-container {
-    padding: 1rem 0.5rem;
+  .heroWrapper {
+    margin: 20px 0;
   }
   
   .blog-list-container {
@@ -175,5 +134,41 @@
   .page-footer {
     margin-top: 2rem;
     padding-top: 1rem;
+  }
+  
+  .blog-overview {
+    gap: 1.25rem;
+    padding: 1rem 0;
+  }
+  
+  .blog-preview:not(:last-child)::after {
+    bottom: -0.75rem;
+  }
+  
+  .blog-post-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .blog-post-content {
+    padding: 1.5rem;
+  }
+  
+  .blog-post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .blog-post-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  
+  .title-one {
+    padding: 3rem 1rem;
+  }
+  
+  .contact-links ul {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

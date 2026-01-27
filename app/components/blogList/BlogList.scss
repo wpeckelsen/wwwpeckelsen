@@ -4,9 +4,11 @@
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 800px;
+  
   margin: 0 auto;
   padding: 2rem 0;
+
+  
 }
 
 .no-posts {
@@ -20,17 +22,3 @@
   }
 }
 
-// Responsive adjustments
-@media (max-width: 768px) {
-  .blog-overview {
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .blog-overview {
-    gap: 1.25rem;
-    padding: 1rem 0;
-  }
-}

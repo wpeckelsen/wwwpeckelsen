@@ -1,19 +1,22 @@
 .hero {
-  width: 100vw;
+  overflow: hidden;
+  width: 100%;
 }
+
 .blueBox {
   position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  // overflow: visible; /* Changed from hidden to visible */
 
   /* Blurred background */
   &::before {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -20% -20% -10% -20%;
+    /* Modified: Reduced bottom negative value */
     z-index: 0;
 
     background-image: var(--bg-image);
@@ -22,7 +25,7 @@
 
     transform: scale(1.2);
     filter: blur(40px) brightness(1.5) saturate(120%) contrast(0.9);
-    opacity: 0.7; /* slightly transparent for light effect */
+    opacity: 0.7;
   }
 
   /* Light bluish overlay */
@@ -31,61 +34,60 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-
-    background: rgba(200, 220, 255, 0.3); /* light blueish tint */
+    background: rgba(200, 220, 255, 0.3);
+  
   }
 }
 
-
-
-.titleWrapper {
+.heroWrapper {
   position: relative;
- z-index: 2;
-  height: 100vh;          // 👈 image fills screen height
-  aspect-ratio: 2 / 3;    // 👈 1024 / 1536
-
-    display: flex;
+  z-index: 2;
+  height: 100vh;
+  aspect-ratio: 2 / 3;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; // 👈 align to top
-  padding-top: 3vh;  
+  justify-content: flex-start;
+  padding-top: 3vh;
+  margin: 50px 0;
+  /* Added: Creates space above and below for the background to show */
 }
 
-.titleImage {
+heroImage {
   position: absolute;
   inset: 0;
   z-index: 1;
+      border-radius: 20px; /* ← Add this */
+  overflow: hidden; /* ← Add this to clip the image corners */
 
   img {
     object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 }
 
-.titleGrid {
+.heroGrid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // 👈 THIS
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: min-content;
   place-content: center;
-
   gap: 1px;
   padding: 1rem;
-
   color: rgb(25, 38, 158);
-  border-radius: 4px;
-  
+  border-radius: 20px;
   backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
 
-.grid-a,
-.grid-b,
-.grid-c,
-.grid-d {
-  grid-column: 1 / -1; // 👈 span full width
-  
-  text-align: center;
-  backdrop-filter: blur(5px);
-}
+  .grid-a,
+  .grid-b,
+  .grid-c,
+  .grid-d {
+    grid-column: 1 / -1;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    
 
+  }
 }

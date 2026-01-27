@@ -89,13 +89,9 @@ a:hover {
   text-underline-offset: 2px;
 }
 
-// .container {
-//   width: 100%;
 
+// @media (min-width: 768px) {
+//   .container {
+//     // padding: 0 2rem;
+//   }
 // }
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 2rem;
-  }
-}
