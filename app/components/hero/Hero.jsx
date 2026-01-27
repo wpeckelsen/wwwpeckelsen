@@ -37,16 +37,16 @@ export default function Hero() {
       >
         {loaded && (
           <div className="heroWrapper">
-            <div className="heroImage">
+            
               <Image
                 src={imageUrl}
                 alt="Print texture background"
                 fill
                 sizes="700px"
                 priority
-                
+                 className="heroImageTwo"
               />
-            </div>
+            
 
             <h1 className="heroGrid">
               <span className="grid-a">w w w</span>

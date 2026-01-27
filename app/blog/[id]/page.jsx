@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../../supabase/supabaseClient';
 import Link from 'next/link';
 import './BlogPost.scss';
+import ReactMarkdown from 'react-markdown';
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -23,9 +24,9 @@ export default function BlogPost() {
       try {
         setLoading(true);
         setError(null);
-        
+
         const { data, error } = await supabase
-          .from('blog') 
+          .from('blog')
           .select('*')
           .eq('id', id)
           .single();
@@ -74,9 +75,9 @@ export default function BlogPost() {
         {/* <Link href="/" className="blog-post-back">
           ← Back to all posts
         </Link> */}
-        
+
         <header className="blog-post-header">
-          
+
           <h1 className="blog-post-title">{post.title}</h1>
           {post.subtitle && (
             <h2 className="blog-post-subtitle">{post.subtitle}</h2>
@@ -89,18 +90,18 @@ export default function BlogPost() {
             })}
           </p>
         </header>
-        
+
         <div className="blog-post-body">
           {post.body_full ? (
-            <div 
-              className="blog-post-content-text"
-              dangerouslySetInnerHTML={{ __html: post.body_full }}
-            />
+            <article className="blog-post-content-text">
+              {/* <ReactMarkdown>{post.body_full}</ReactMarkdown> */}
+              <ReactMarkdown>{post.body_full}</ReactMarkdown>
+            </article>
           ) : (
             <p className="no-content">No content available for this post.</p>
           )}
         </div>
-        
+
         <footer className="blog-post-footer">
           <Link href="/" className="back-home-link">
             ← Back to Home
