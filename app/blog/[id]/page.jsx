@@ -6,6 +6,8 @@ import { supabase } from '../../supabase/supabaseClient';
 import Link from 'next/link';
 import './BlogPost.scss';
 import ReactMarkdown from 'react-markdown';
+import { IMAGE_HELPERS } from '../../supabase/fetchImageUrl';
+
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -94,8 +96,24 @@ export default function BlogPost() {
         <div className="blog-post-body">
           {post.body_full ? (
             <article className="blog-post-content-text">
-              {/* <ReactMarkdown>{post.body_full}</ReactMarkdown> */}
-              <ReactMarkdown>{post.body_full}</ReactMarkdown>
+              
+              <ReactMarkdown
+                components={{
+                  img: ({ src, alt }) => {
+                    const url = IMAGE_HELPERS.blogContent(src);
+
+                    return (
+                      <img
+                        src={url}
+                        alt={alt}
+                        style={{ maxWidth: '100%' }}
+                      />
+                    );
+                  }
+                }}
+              >
+                {post.body_full}
+              </ReactMarkdown>
             </article>
           ) : (
             <p className="no-content">No content available for this post.</p>

@@ -38,16 +38,7 @@ export function getBlogHeaderImage(blogId, imagePath = null) {
   return getImageUrl(bucket, defaultPath);
 }
 
-// Get any image with fallback
-// // export function getImageWithFallback(imagePath, bucketName = BUCKETS.GENERAL_IMAGES, fallbackPath = 'default.jpg') {
-// //   try {
-// //     const url = getImageUrl(bucketName, imagePath);
-// //     return url;
-// //   } catch (error) {
-// //     console.warn(`Image not found: ${imagePath}, using fallback`);
-// //     return getImageUrl(bucketName, fallbackPath);
-// //   }
-// }
+
 
 // For multiple images
 export function getImageUrls(bucketName, paths) {
